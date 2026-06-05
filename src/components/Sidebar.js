@@ -13,27 +13,41 @@ export default function Sidebar() {
 
   return `
     <aside
-      class="w-64 bg-slate-900 text-white h-screen p-5"
+      class="w-64 bg-gray-900 text-white h-screen p-6 fixed md:relative overflow-y-auto hidden md:block"
     >
-      <h2 class="text-2xl font-bold mb-8">
-        SPA Base
-      </h2>
+      <div class="mb-8">
+        <h2 class="text-xl font-bold mb-1">
+          Reservas
+        </h2>
+        <p class="text-xs text-gray-400">
+          Sistema de espacios
+        </p>
+      </div>
 
-      <nav class="flex flex-col gap-4">
-
-        <a href="/home" class="px-3 py-1 bg-gray-500 rounded-xl" data-link>
-          Home
+      <nav class="flex flex-col gap-2 mb-8">
+        <a
+          href="/home"
+          class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-300 hover:bg-gray-800 hover:text-white transition-colors"
+          data-link
+        >
+          📊 Inicio
         </a>
 
-        <button
-          id="logoutBtn"
-          class="text-left cursor-pointer text-red-400 hover:text-white hover:bg-red-400 px-3 py-1 rounded-xl"
+        <a
+          href="/reservas"
+          class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-300 hover:bg-gray-800 hover:text-white transition-colors"
+          data-link
         >
-          Cerrar sesión
-        </button>
-
+          📅 Reservas
+        </a>
       </nav>
 
+      <button
+        id="logoutBtn"
+        class="w-full px-4 py-2 rounded-lg text-sm font-semibold text-gray-300 hover:bg-red-900 hover:text-white transition-colors mt-auto text-left"
+      >
+        🚪 Cerrar sesión
+      </button>
     </aside>
   `;
 }

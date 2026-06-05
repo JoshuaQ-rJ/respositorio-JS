@@ -1,47 +1,94 @@
 {
   "users": [
     {
-      "id": 1,
-      "email": "Admin@test.com",
-      "password": "12356*",
-      "role": "admin",
-      "name": "Administrador"
+      "id": "1",
+      "name": "Ana Garcia",
+      "email": "admin@test.com",
+      "password": "admin123",
+      "role": "admin"
     },
     {
-      "id": 2,
-      "email": "user@test.com",
-      "password": "A123456",
-      "role": "user",
-      "name": "Usuario"
+      "id": "2",
+      "name": "Carlos Lopez",
+      "email": "user1@test.com",
+      "password": "user123",
+      "role": "user"
     },
     {
-      "id": 3,
+      "id": "3",
+      "name": "Maria Torres",
       "email": "user2@test.com",
-      "password": "A123456",
-      "role": "user",
-      "name": "Usuario 2"
+      "password": "user123",
+      "role": "user"
     }
   ],
-  "reservations": [
+  "reservas": [
     {
-      "id": 1,
-      "userId": 2,
-      "workspace": "Sala A",
-      "date": "2026-01-15",
-      "startHour": "08:00",
-      "endHour": "09:00",
-      "reason": "Sprint Planning",
-      "status": "pending"
+      "id": "1",
+      "userId": "2",
+      "userName": "Carlos Lopez",
+      "espacio": "Sala de reuniones A",
+      "tipoEspacio": "Sala de reuniones",
+      "fecha": "2026-06-10",
+      "horaInicio": "09:00",
+      "horaFin": "10:30",
+      "motivo": "Planeacion del sprint",
+      "estado": "approved",
+      "createdAt": "2026-06-01T14:15:00.000Z"
     },
     {
-      "id": 2,
-      "userId": 3,
-      "workspace": "Sala B",
-      "date": "2026-01-15",
-      "startHour": "10:00",
-      "endHour": "11:00",
-      "reason": "Daily Meeting",
-      "status": "approved"
+      "id": "2",
+      "userId": "3",
+      "userName": "Maria Torres",
+      "espacio": "Coworking Norte",
+      "tipoEspacio": "Coworking",
+      "fecha": "2026-06-10",
+      "horaInicio": "11:00",
+      "horaFin": "13:00",
+      "motivo": "Trabajo colaborativo",
+      "estado": "approved",
+      "createdAt": "2026-06-02T09:30:00.000Z"
+    },
+    {
+      "id": "3",
+      "userId": "2",
+      "userName": "Carlos Lopez",
+      "espacio": "Oficina Ejecutiva 1",
+      "tipoEspacio": "Oficina",
+      "fecha": "2026-06-11",
+      "horaInicio": "14:00",
+      "horaFin": "15:30",
+      "motivo": "Reunion con cliente",
+      "estado": "approved",
+      "createdAt": "2026-06-03T16:45:00.000Z"
+    },
+    {
+      "id": "4",
+      "userId": "2",
+      "userName": "Carlos Lopez",
+      "espacio": "Oficina Privada 2",
+      "tipoEspacio": "Oficina",
+      "fecha": "2026-06-12",
+      "horaInicio": "08:00",
+      "horaFin": "10:00",
+      "motivo": "Capacitacion interna",
+      "estado": "rejected",
+      "createdAt": "2026-06-04T11:10:00.000Z",
+      "updatedAt": "2026-06-05T19:24:30.436Z"
+    },
+    {
+      "userId": "2",
+      "userName": "Carlos Lopez",
+      "espacio": "Coworking Norte",
+      "tipoEspacio": "Coworking",
+      "fecha": "2026-07-16",
+      "horaInicio": "18:00",
+      "horaFin": "18:30",
+      "motivo": "jsKJASkBNASKcbkbacasscav<sdv",
+      "estado": "pending",
+      "createdAt": "2026-06-05T19:26:10.985Z",
+      "id": "wFJO89z7gHs"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

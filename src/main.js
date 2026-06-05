@@ -1,6 +1,12 @@
 import "@/style.css";
-import { router } from "@/router/router";
+import { router } from "@/router.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("hashchange", router);
+window.addEventListener("DOMContentLoaded", () => {
+  if (!window.location.hash) {
+    window.location.hash = "#/login";
+    return;
+  }
+
   router();
 });

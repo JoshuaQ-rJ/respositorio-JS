@@ -23,7 +23,7 @@ const request = async (
 
     return await response.json();
   } catch (error) {
-    console.error(error);
+    console.error("API Error:", error);
     throw error;
   }
 };

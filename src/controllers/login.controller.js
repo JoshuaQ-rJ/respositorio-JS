@@ -1,8 +1,8 @@
 import { saveSession } from "@/utils";
 import { navigateTo } from "@/router/router";
-import { http } from "@/api/http";
 import { qs } from "@/utils/dom";
 import { authenticate } from "@/security/auth.service";
+import { loginUser } from "@/security/auth.guard";
 
 export const loginController = () => {
   const form = qs("#loginForm");
@@ -11,17 +11,15 @@ export const loginController = () => {
     e.preventDefault();
 
     const email = form.email.value.trim();
-    console.log("Email ingresado:", email);
     const password = form.password.value.trim();
-    console.log("Password ingresado:", password);
 
-    
+    try {
       const user = await authenticate(email, password);
-      console.log("Usuario autenticado:", user);
       saveSession(user);
-          
-      
+      loginUser(user);
       navigateTo("/home");
-    
+    } catch (error) {
+      alert("❌ " + error.message);
+    }
   });
 }
