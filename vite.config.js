@@ -15,7 +15,7 @@ export default defineConfig({
         new URL("./src/controllers", import.meta.url),
       ),
       "@router": fileURLToPath(new URL("./src/router", import.meta.url)),
-       "@services": fileURLToPath(new URL("./src/services", import.meta.url)),
+      "@services": fileURLToPath(new URL("./src/services", import.meta.url)),
       "@assets": fileURLToPath(new URL("./src/assets", import.meta.url)),
       "@utils": fileURLToPath(new URL("./src/utils", import.meta.url)),
       "@api": fileURLToPath(new URL("./src/api", import.meta.url)),

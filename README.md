@@ -1,6 +1,6 @@
 # Workspace Reservation System - SPA
 
-A modern Single Page Application built with vanilla JavaScript, Vite, Tailwind CSS, and JSON Server for managing workspace reservations with role-based access control.
+A modern Single Page Application built with vanilla JavaScript, Vite, Tailwind CSS, and JSON Server for managing cinema`s reservations with role-based access control.
 
 ## 🎯 Features
 
@@ -203,11 +203,11 @@ DELETE /reservas/{id}         # Delete reservation
 {
   "id": 1,
   "userId": 2,
-  "espacio": "Sala A",
+  "espacio": "Sala x",
   "fecha": "2026-06-10",
   "horaInicio": "08:00",
   "horaFin": "09:00",
-  "motivo": "Sprint Planning",
+  "motivo": "....",
   "estado": "pending"
 }
 ```
@@ -238,15 +238,6 @@ DELETE /reservas/{id}         # Delete reservation
 ---
 
 ## 🎨 Design System
-
-### Color Palette
-```
-Primary:    indigo-600      # Main action buttons
-Success:    green-600       # Approval action
-Warning:    amber-600       # Pending status
-Error:      rose-600        # Rejection/Cancellation
-Neutral:    slate-600       # Backgrounds and borders
-```
 
 ### Responsive Breakpoints
 ```
@@ -428,15 +419,6 @@ This project demonstrates:
 
 ---
 
-## 📚 Additional Documentation
-
-For more detailed information, see:
-- **GUÍA_RÁPIDA.md** - Quick start guide (Spanish)
-- **DOCUMENTACIÓN_TÉCNICA.md** - Technical architecture (Spanish)
-- **CHECKLIST.md** - Feature checklist and testing (Spanish)
-
----
-
 ## 🐛 Troubleshooting
 
 ### JSON Server not starting
@@ -457,20 +439,6 @@ npm run dev
 - Check browser localStorage (DevTools → Application → localStorage)
 - Verify key: `workspace_session`
 - Check browser privacy/incognito mode restrictions
-
----
-
-## 🔮 Future Enhancements
-
-- JWT-based authentication
-- Advanced search and filtering
-- Admin statistics and reports
-- Email notifications
-- Workspace management
-- Time zone support
-- Export to PDF/CSV
-- Two-factor authentication
-- Activity logs and audit trail
 
 ---
 
@@ -499,6 +467,6 @@ Task Runner: Concurrently
 
 ---
 
-**Built with ❤️ using Vanilla JavaScript, Vite, and Tailwind CSS**
+**using Vanilla JavaScript, Vite, and Tailwind CSS**
 
 *Ready for production. Happy coding! 🚀*

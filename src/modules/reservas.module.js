@@ -1,39 +1,39 @@
 import { apiRequest, getSession } from "@/security/auth";
 import { bindShellEvents, layout, ui } from "@/modules/home.module";
 
-const formControlClass =
-  "w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-950 outline-none transition focus:border-teal-700 focus:ring-4 focus:ring-teal-500/15 disabled:cursor-not-allowed disabled:opacity-60 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100";
-const labelClass = "mb-1.5 block text-sm font-bold text-slate-700 dark:text-slate-200";
+export const formControlClass =
+  "w-full rounded-lg border border-[#FCC252] bg-[#FDFCFA] px-3 py-2.5 text-sm text-[#7E1616] outline-none transition focus:border-[#FCC252 focus:ring-4 focus:ring-[#FCC252] disabled:cursor-not-allowed disabled:opacity-60 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100";
+export const labelClass = "mb-1.5 block text-sm font-bold text-[#fff3dc] dark:text-[#fff3dc]";
 const dangerButtonClass =
-  "inline-flex min-h-10 items-center justify-center rounded-lg bg-red-600 px-4 py-2 text-sm font-extrabold text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex min-h-10 items-center justify-center rounded-lg border-red-700 px-4 py-2 text-sm font-extrabold text-white transition hover: bg-red-500 disabled:cursor-not-allowed disabled:opacity-60";
 const successButtonClass =
   "inline-flex min-h-10 items-center justify-center rounded-lg bg-emerald-600 px-4 py-2 text-sm font-extrabold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-60";
 const warningButtonClass =
   "inline-flex min-h-10 items-center justify-center rounded-lg bg-amber-600 px-4 py-2 text-sm font-extrabold text-white transition hover:bg-amber-700 disabled:cursor-not-allowed disabled:opacity-60";
 const statusPillClass = "inline-flex items-center rounded-full px-2.5 py-1 text-xs font-black uppercase";
 
-const espacios = [
-  { nombre: "Oficina Ejecutiva 1", tipo: "Oficina" },
-  { nombre: "Oficina Privada 2", tipo: "Oficina" },
-  { nombre: "Sala de reuniones A", tipo: "Sala de reuniones" },
-  { nombre: "Sala de reuniones B", tipo: "Sala de reuniones" },
-  { nombre: "Coworking Norte", tipo: "Coworking" },
-  { nombre: "Coworking Sur", tipo: "Coworking" },
-  { nombre: "Auditorio Principal", tipo: "Auditorio" },
-  { nombre: "Auditorio Creativo", tipo: "Auditorio" },
+export const espacios = [
+  { nombre: "Backrooms", tipo: "sala 4DX" },
+  { nombre: "El Afinador", tipo: "sala 3" },
+  { nombre: "Scary movie", tipo: "sala 4DX" },
+  { nombre: "Amos del universo", tipo: "Sala 5" },
+  { nombre: "Toy story 5", tipo: "sala 6" },
+  { nombre: "Michael", tipo: "sala 7" },
+  { nombre: "El diablo viste a la moda", tipo: "sala 8" },
+  { nombre: "Super mario galaxy movi", tipo: "sala 9" },
 ];
 
 const estadoTexto = {
-  pending: "Pendiente",
-  approved: "Aprobada",
-  rejected: "Rechazada",
+  pending: "en funcion",
+  approved: "libre",
+  rejected: "terminada",
   cancelled: "Cancelada",
 };
 
 const estadoClase = {
-  pending: "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-200",
-  approved: "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200",
-  rejected: "bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-200",
+  pending: "bg-amber-100 text-amber-800 dark: dark:text-[#7E1616]",
+  approved: "bg-emerald-100 text-emerald-800 dark:dark:text-emerald-600",
+  rejected: "bg-rose-100 text-rose-800 dark: dark:text-rose-600",
   cancelled: "bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-200",
 };
 
@@ -112,7 +112,7 @@ function renderForm() {
   return `
     <section class="${ui.surface} p-5">
       <div class="mb-5">
-        <p class="text-sm font-bold text-teal-700 dark:text-teal-300">${editing ? "Edicion" : "Nueva reserva"}</p>
+        <p class="text-sm font-bold text-[#7E1616] dark:text-[#FCC252]">${editing ? "Edicion" : "Nueva reserva"}</p>
         <h3 class="mt-1 text-xl font-black text-slate-950 dark:text-white">${editing ? "Actualizar reserva" : "Reservar un espacio"}</h3>
       </div>
       <form id="reservaForm" class="grid gap-4">
@@ -174,12 +174,12 @@ function renderFilters() {
   return `
     <section class="${ui.surface} p-4">
       <div class="grid gap-3 md:grid-cols-[1fr_220px]">
-        <input id="searchReservas" class="${formControlClass}" type="search" placeholder="Buscar por espacio, usuario, fecha o motivo" value="${escapeHtml(state.filtroTexto)}">
+        <input id="searchReservas" class="${formControlClass}" type="search" placeholder="Buscar por espacio, usuario, fecha o nombre" value="${escapeHtml(state.filtroTexto)}">
         <select id="statusFilter" class="${formControlClass}">
           <option value="all" ${state.filtroEstado === "all" ? "selected" : ""}>Todos los estados</option>
-          <option value="pending" ${state.filtroEstado === "pending" ? "selected" : ""}>Pendientes</option>
-          <option value="approved" ${state.filtroEstado === "approved" ? "selected" : ""}>Aprobadas</option>
-          <option value="rejected" ${state.filtroEstado === "rejected" ? "selected" : ""}>Rechazadas</option>
+          <option value="pending" ${state.filtroEstado === "pending" ? "selected" : ""}>En funcion</option>
+          <option value="approved" ${state.filtroEstado === "approved" ? "selected" : ""}>Disponibles</option>
+          <option value="rejected" ${state.filtroEstado === "rejected" ? "selected" : ""}>Finalizadas</option>
           <option value="cancelled" ${state.filtroEstado === "cancelled" ? "selected" : ""}>Canceladas</option>
         </select>
       </div>
@@ -425,10 +425,10 @@ export async function renderReservas({ adminView = false } = {}) {
     <main class="px-4 py-8 md:px-8">
       <section class="mb-7 flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
         <div>
-          <p class="text-xs font-bold uppercase tracking-widest text-teal-700 dark:text-teal-300">${session.role === "admin" ? "Vista global" : "Vista personal"}</p>
-          <h2 class="mt-2 text-3xl font-black tracking-tight text-slate-950 dark:text-white">${adminView ? "Administracion de reservas" : "Reservas"}</h2>
+          <p class="text-xs font-bold uppercase tracking-widest text-teal-700 dark:text-[#FCC252]">${session.role === "admin" ? "Vista global" : "Vista personal"}</p>
+          <h2 class="mt-2 text-3xl font-black tracking-tight text-slate-950 dark:text-white">${adminView ? "Administracion de Peliculas" : "Peliculas"}</h2>
           <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300">
-            ${session.role === "admin" ? "Puedes aprobar, rechazar, editar y eliminar cualquier reserva." : "Solo ves tus reservas. Las pendientes pueden editarse; las aprobadas pueden cancelarse."}
+            ${session.role === "admin" ? "Puedes aprobar, rechazar, editar y eliminar cualquier pelicula." : "Solo las peliculas disponibles. ."}
           </p>
         </div>
       </section>

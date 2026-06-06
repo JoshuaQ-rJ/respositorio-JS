@@ -3,12 +3,12 @@ import { renderHome } from "@/modules/home.module";
 import { renderReservas } from "@/modules/reservas.module";
 
 const ui = {
-  shell: "min-h-screen bg-slate-50 text-slate-950 dark:bg-slate-950 dark:text-slate-100",
-  surface: "rounded-lg border border-slate-200 bg-white/95 shadow-sm dark:border-slate-800 dark:bg-slate-900/90",
+  shell: "min-h-screen bg-slate-50 text-slate-950 dark:bg-[#2B1818] dark:text-slate-100",
+  surface: "rounded-lg border border-slate-200 bg-[#FDFCFA] shadow-sm dark:border-[#7E1616] dark:bg-slate-900/90",
   label: "mb-1.5 block text-sm font-bold text-slate-700 dark:text-slate-200",
-  input: "w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-950 outline-none transition focus:border-teal-700 focus:ring-4 focus:ring-teal-500/15 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100",
-  primary: "inline-flex min-h-10 items-center justify-center rounded-lg bg-slate-950 px-4 py-2 text-sm font-extrabold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-teal-400 dark:text-teal-950 dark:hover:bg-teal-300",
-  secondary: "inline-flex min-h-10 items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-extrabold text-slate-950 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-60 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:hover:bg-slate-800",
+  input: "w-full rounded-lg border border-[#FCC252] bg-[#FDFCFA] px-3 py-2.5 text-sm text-slate-950 outline-none transition focus:border-teal-700 focus:ring-4 focus:ring-teal-500/15 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100",
+  primary: "inline-flex min-h-10 items-center justify-center rounded-lg bg-slate-950 px-4 py-2 text-sm font-extrabold text-[#FDFCFA] transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-[#FDFCFA] dark:text-[#E50914] dark:hover:bg-[#a7030c]",
+  secondary: "inline-flex min-h-10 items-center justify-center rounded-lg border border-[#FCC252] bg-white px-4 py-2 text-sm font-extrabold text-slate-950 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-60 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:hover:bg-slate-800",
 };
 
 const routes = {
@@ -57,7 +57,7 @@ function renderLogin() {
       <main class="${ui.shell} grid place-items-center p-5">
         <section class="${ui.surface} w-full max-w-md p-7">
           <div class="mb-7">
-            <p class="text-xs font-bold uppercase tracking-widest text-teal-700 dark:text-teal-300">Sistema de Reservas</p>
+            <p class="text-xs font-bold uppercase tracking-widest text-[#7E1616] dark:text-[#7E1616]">Sistema de Reservas</p>
             <h1 class="mt-2 text-3xl font-black tracking-tight text-slate-950 dark:text-white">Iniciar sesion</h1>
             <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Accede para gestionar espacios de trabajo.</p>
           </div>
@@ -77,7 +77,6 @@ function renderLogin() {
             <p class="font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">Credenciales</p>
             <p class="mt-2"><strong>Admin:</strong> admin@test.com / admin123</p>
             <p><strong>User 1:</strong> user1@test.com / user123</p>
-            <p><strong>User 2:</strong> user2@test.com / user123</p>
           </div>
         </section>
       </main>

@@ -1,12 +1,12 @@
 import { apiRequest, getSession, logout } from "@/security/auth";
 import { navigateTo } from "@/router.js";
-
+import{formControlClass,labelClass,espacios} from "./reservas.module"
 export const ui = {
-  shell: "min-h-screen bg-slate-50 text-slate-950 dark:bg-slate-950 dark:text-slate-100",
-  surface: "rounded-lg border border-slate-200 bg-white/95 shadow-sm dark:border-slate-800 dark:bg-slate-900/90",
-  primary: "inline-flex min-h-10 items-center justify-center rounded-lg bg-slate-950 px-4 py-2 text-sm font-extrabold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-teal-400 dark:text-teal-950 dark:hover:bg-teal-300",
-  secondary: "inline-flex min-h-10 items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-extrabold text-slate-950 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-60 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:hover:bg-slate-800",
-  ghost: "inline-flex min-h-10 items-center justify-center rounded-lg border border-slate-700 px-4 py-2 text-sm font-extrabold text-slate-200 transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60",
+  shell: "min-h-screen bg-[#2B1818] text-[#7E1616] dark:bg-[#7E1616] dark:text-[]#FCC252",
+  surface: "rounded-lg border border-[#FDFCFA] bg-[#FDFCFA] shadow-sm dark:border-[#FCC252] dark:bg-[#2B1818]",
+  primary: "inline-flex min-h-10 items-center justify-center rounded-lg bg-[#7E1616] px-4 py-2 text-sm font-extrabold text-[#FDFCFA] transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-[#FCC252] dark:text-teal-950 dark:hover:bg-[#FDFCFA] hover:text-[#FCC252] ",
+  secondary: "inline-flex min-h-10 items-center justify-center rounded-lg border border-[#FCC252] bg-white px-4 py-2 text-sm font-extrabold text-[#f1eadbec] transition hover:hover:bg-[#FDFCFA] hover:text-[#FCC252]  disabled:cursor-not-allowed disabled:opacity-60 dark:border-[#FCC252] dark:bg-[#FCC252] dark:text-slate-100 dark:hover:bg-[#FDFCFA] hover:text-[#FCC252] ",
+  ghost: "inline-flex min-h-10 items-center justify-center rounded-lg border border-[#ecd3a0] px-4 py-2 text-sm font-extrabold text-slate-200 transition hover:bg-[#FDFCFA] hover:text-[#FCC252] disabled:cursor-not-allowed disabled:opacity-60",
 };
 
 const statusLabel = {
@@ -22,7 +22,7 @@ function layout(content, active = "home") {
     <div class="${ui.shell} flex">
       <aside class="hidden min-h-screen w-72 border-r border-slate-200 bg-slate-950 p-6 text-white md:block dark:border-slate-800">
         <div class="mb-8">
-          <p class="text-xs font-bold uppercase tracking-widest text-teal-300">Workspace</p>
+          <p class="text-xs font-bold uppercase tracking-widest text-teal-300">Cinepolis</p>
           <h1 class="mt-2 text-2xl font-black">Reservas</h1>
           <p class="mt-1 text-sm text-slate-400">${session.name}</p>
         </div>
@@ -86,12 +86,12 @@ function metricCard(title, value, detail, accent) {
 }
 
 export async function renderHome() {
-  const session = getSession();
-  const query = session.role === "admin" ? "/reservas" : `/reservas?userId=${session.id}`;
-  const reservas = await apiRequest(query);
-  const counts = reservas.reduce(
+  const session = getSession();   
+  const reservas = await apiRequest("/reservas");
+  const counts = await reservas.reduce(
     (acc, reserva) => ({ ...acc, [reserva.estado]: acc[reserva.estado] + 1 }),
-    { pending: 0, approved: 0, rejected: 0 },
+    { pending: 0, approved: 0, rejected: 0 }
+    
   );
 
   const roleCards =
@@ -105,9 +105,9 @@ export async function renderHome() {
       `
       : `
         <a href="#/reservas" class="${ui.surface} group p-5 transition hover:-translate-y-0.5 hover:border-teal-500">
-          <p class="text-sm font-bold text-slate-500 dark:text-slate-400">Mis solicitudes</p>
+          <p class="text-sm font-bold text-slate-500 dark:text-slate-400">Mis Reservas</p>
           <h3 class="mt-3 text-xl font-black text-slate-950 dark:text-white">Crear y seguir reservas</h3>
-          <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Consulta el estado de tus reservas y crea nuevas solicitudes de espacios de trabajo.</p>
+          <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Consulta el estado de tus reservas y crea nuevas solicitudes para ingresar a las peliculas.</p>
         </a>
       `;
 
@@ -117,16 +117,16 @@ export async function renderHome() {
         <div>
           <h2 class="text-3xl font-black tracking-tight text-slate-950 dark:text-white">Hola, ${session.name}</h2>
           <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300">
-            Panel de control del sistema de reservas de oficinas, salas, coworking y auditorios.
+            Bienvenido a cinepolis aqui le apareceran las peliculas disponibles.
           </p>
         </div>
-        <a href="#/reservas" class="${ui.primary}">Gestionar reservas</a>
+        <a href="#/reservas" class="${ui.primary}">Realizar reserva</a>
       </section>
 
       <section class="grid gap-4 md:grid-cols-3">
-        ${metricCard(statusLabel.pending, counts.pending, "Solicitudes por revisar", "amber")}
-        ${metricCard(statusLabel.approved, counts.approved, "Reservas confirmadas", "emerald")}
-        ${metricCard(statusLabel.rejected, counts.rejected, "Solicitudes rechazadas", "rose")}
+        ${metricCard(statusLabel.pending, counts.pending, "Peliculas en funcion", "amber")}
+        ${metricCard(statusLabel.approved, counts.approved, "Peliculas disponibles", "emerald")}
+        ${metricCard(statusLabel.rejected, counts.rejected, "Peliculas finalizadas", "rose")}
       </section>
 
       <section class="mt-6 grid gap-4 lg:grid-cols-2">
@@ -137,6 +137,24 @@ export async function renderHome() {
           <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
             La sesion persiste al recargar, las rutas privadas estan protegidas y los usuarios no pueden ver reservas ajenas.
           </p>
+        </article>
+        <article class="${ui.surface} p-5">
+          <p class="text-sm  flex justify-center font-bold text-slate-500 dark:text-slate-400">Peliculas disponibles</p>
+          <div>
+          <label class="${labelClass}" for="espacio">Espacio</label>
+          <select id="espacio" class="${formControlClass}" required>
+            <option value="">Selecciona un Pelicula</option>
+            ${espacios
+              .map(
+                (espacio) => `
+                  <option value="${espacio.nombre}" data-tipo="${espacio.tipo}" ${espacio.nombre ? "selected" : ""}>
+                    ${espacio.nombre} - ${espacio.tipo}
+                  </option>
+                `,
+              )
+              .join("")}
+          </select>
+        </div>
         </article>
       </section>
     </main>

@@ -6,19 +6,19 @@ export default function loginView() {
   });
 
   return `
-    <div class="min-h-screen flex justify-center items-center bg-gray-50">
+    <div class="min-h-screen flex justify-center items-center bg-[#1A1A1A]">
       <div class="w-full max-w-sm">
-        <div class="bg-white rounded-xl border border-gray-200 p-8 shadow-sm">
+        <div class="bg-[#f1eadbec] rounded-xl border-4 border-[#e7c37bd8] p-8 shadow-sm">
           <div class="mb-8">
-            <h1 class="text-2xl font-bold text-gray-900 mb-2">
+            <h1 class="text-2xl font-bold text-[#7E1616] mb-2">
               Sistema de Reservas
             </h1>
-            <p class="text-sm text-gray-600">
+            <p class="text-sm text-[#7E1616]">
               Inicia sesión para continuar
             </p>
           </div>
 
-          <form id="loginForm" class="space-y-4">
+          <form id="loginForm" class="space-y-4 text-[#7E1616]">
             <div>
               <label class="label-base">
                 Correo electrónico
@@ -53,8 +53,8 @@ export default function loginView() {
             </button>
           </form>
 
-          <div class="mt-6 pt-6 border-t border-gray-200">
-            <p class="text-xs text-gray-600 mb-3 font-semibold">
+          <div class="mt-6 pt-6 border-t border-[#FCC252]">
+            <p class="text-xs text-[#7E1616] mb-3 font-semibold">
               CREDENCIALES DE PRUEBA
             </p>
             <div class="space-y-2 text-xs text-gray-700">
